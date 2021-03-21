@@ -1,0 +1,78 @@
+.Kanban {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(4, 282px);
+  grid-template-rows: 1fr;
+  gap: 24px;
+
+  &-item {
+    background-color: #EBECF0;
+    border-radius: 10px;
+    overflow: auto;
+    overflow-x: hidden;
+    max-height: 760px;
+    padding: 12px;
+
+    &__title {
+      font-size: 18px;
+      line-height: 21px;
+    }
+
+    &__task {
+      background-color: #fff;
+      border-radius: 5px;
+      padding: 7px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-bottom: 15px;
+      &:hover {
+        -webkit-box-shadow: 0 4px 10px 0 #044FA3;
+        box-shadow: 0 4px 10px 0 #044FA3;
+      }
+    }
+
+    &__add-btn {
+      border: 0;
+      outline: 0;
+      font-size: 18px;
+      font-family: 'Roboto', sans-serif;
+      color: #5E6C84;
+      background-color: #EBECF0;
+      cursor: pointer;
+      background-image: url('./images/add-card.svg');
+      background-repeat: no-repeat;
+      background-position: 0 center;
+      padding-left: 20px;
+      transition: all 0.2s;
+      &:hover {
+        background-color: #fff;
+        border-radius: 5px;
+      }
+    }
+
+    &__submit-btn {
+      cursor: pointer;
+      border: 0;
+      width: 102px;
+      height: 29px;
+      font-family: 'Roboto', sans-serif;
+      color: #fff;
+      font-size: 18px;
+      line-height: 21px;
+      border-radius: 5px;
+      background-color: #0079BF;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  background-color: #fff;
+  border-radius: 10px;
+  max-height: 300px;
+  display: block;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #CBCBCB;
+  border-radius: 10px;
+}
