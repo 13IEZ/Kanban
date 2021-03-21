@@ -1,0 +1,13 @@
+.Footer {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+
+  &-left {
+    display: flex;
+    & p:last-child {
+      margin-left: 36px;
+    }
+  }
+}

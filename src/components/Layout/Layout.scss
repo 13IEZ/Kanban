@@ -1,0 +1,19 @@
+.Layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+
+  &-header {
+    background: #0067A3;
+  }
+
+  &-main {
+    background: #0079BF;
+    height: 100%;
+  }
+
+  &-footer {
+    background: #0067A3;
+  }
+}
