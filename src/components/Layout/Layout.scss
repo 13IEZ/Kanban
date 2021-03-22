@@ -5,18 +5,18 @@
   height: 100vh;
 
   &-header {
-    background: #0067A3;
+    background: #0067a3;
   }
 
   &-main {
-    background: #0079BF;
+    background: #0079bf;
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: start;
+    align-items: flex-start;
   }
 
   &-footer {
-    background: #0067A3;
+    background: #0067a3;
   }
 }

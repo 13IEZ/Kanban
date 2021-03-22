@@ -1,15 +1,24 @@
-import './Kanban.scss'
+import './Kanban.scss';
 import Backlog from './Backlog/Backlog';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchTasks } from '../../store/action';
 
 const Kanban = () => {
-	return (
-		<div className="Kanban">
-			<Backlog />
-			<Backlog />
-			<Backlog />
-			<Backlog />
-		</div>
-	)
-}
+  const dispatch = useDispatch();
 
-export default Kanban
+  useEffect(() => {
+    dispatch(fetchTasks());
+  });
+
+  return (
+    <div className='Kanban'>
+      <Backlog />
+      {/* <Backlog /> */}
+      {/* <Backlog /> */}
+      {/* <Backlog /> */}
+    </div>
+  );
+};
+
+export default Kanban;

@@ -1,12 +1,12 @@
 .Kanban {
   margin: 20px 0;
   display: grid;
-  grid-template-columns: repeat(4, 282px);
+  grid-template-columns: repeat(4, minmax(282px, 500px));
   grid-template-rows: 1fr;
   gap: 24px;
-
+  padding: 0 20px;
   &-item {
-    background-color: #EBECF0;
+    background-color: #ebecf0;
     border-radius: 10px;
     overflow: auto;
     overflow-x: hidden;
@@ -24,11 +24,17 @@
       padding: 7px;
       cursor: pointer;
       transition: all 0.2s;
-      margin-bottom: 15px;
+      border: 0;
+      outline: 0;
+      width: 100%;
+      font-size: 18px;
       &:hover {
-        -webkit-box-shadow: 0 4px 10px 0 #044FA3;
-        box-shadow: 0 4px 10px 0 #044FA3;
+        -webkit-box-shadow: 0 4px 10px 0 #044fa3;
+        box-shadow: 0 4px 10px 0 #044fa3;
       }
+      // &:disabled {
+      //   color: #000;
+      // }
     }
 
     &__add-btn {
@@ -36,8 +42,8 @@
       outline: 0;
       font-size: 18px;
       font-family: 'Roboto', sans-serif;
-      color: #5E6C84;
-      background-color: #EBECF0;
+      color: #5e6c84;
+      background-color: #ebecf0;
       cursor: pointer;
       background-image: url('./images/add-card.svg');
       background-repeat: no-repeat;
@@ -60,7 +66,11 @@
       font-size: 18px;
       line-height: 21px;
       border-radius: 5px;
-      background-color: #0079BF;
+      background-color: #0079bf;
+      outline: 0;
+      &:hover {
+        background-color: #01629b;
+      }
     }
   }
 }
@@ -73,6 +83,11 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #CBCBCB;
+  background-color: #cbcbcb;
   border-radius: 10px;
+}
+
+textarea:disabled {
+  color: #000;
+  cursor: pointer;
 }
