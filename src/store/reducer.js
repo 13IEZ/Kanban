@@ -1,7 +1,8 @@
 import { FETCH_STATUS_SUCCESS } from './actionTypes';
 const initialState = {
   tasks: [],
-  backlogTasks: []
+  backlogTasks: [],
+  readyTasks: []
 };
 
 const reducer = (state = initialState, action) => {

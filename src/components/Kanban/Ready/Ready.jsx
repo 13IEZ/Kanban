@@ -5,17 +5,23 @@ import ReadyItem from './ReadyItem/ReadyItem';
 
 const Ready = () => {
 	const [disable, setDisable] = useState(true);
-	const backlogTasks = useSelector(state => state.backlogTasks)
+	const backlogTasks = useSelector(state => state.backlogTasks);
+	const readyTasks = useSelector(state => state.readyTasks);
 
 	useEffect(() => {
 		if (backlogTasks.length > 0) setDisable(false);
 		else setDisable(true);
-	}, [backlogTasks])
+	}, [backlogTasks]);
+
+	const moveTaskHandler = () => {
+
+	}
 
 	return (
 		<div className='Kanban-item'>
 			<h2 className='Kanban-item__title'>Ready</h2>
-			<ReadyItem />
+			{readyTasks.map(elem => <ReadyItem key={elem.id} elem={elem}/>)}
+			{/*<ReadyItem/>*/}
 			<button
 				// onClick={console.log(1)}
 				disabled={disable}
