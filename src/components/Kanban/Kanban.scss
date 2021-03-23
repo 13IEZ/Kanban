@@ -32,9 +32,6 @@
         -webkit-box-shadow: 0 4px 10px 0 #044fa3;
         box-shadow: 0 4px 10px 0 #044fa3;
       }
-      // &:disabled {
-      //   color: #000;
-      // }
     }
 
     &__add-btn {
@@ -90,4 +87,8 @@
 textarea:disabled {
   color: #000;
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
 }

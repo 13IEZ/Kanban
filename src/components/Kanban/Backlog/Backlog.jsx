@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addNewTask, updateTask } from '../../../store/action';
 
 const Backlog = () => {
-  const tasks = useSelector((state) => state.tasks);
+  const backlogTasks = useSelector((state) => state.backlogTasks);
   const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const Backlog = () => {
   return (
     <div className='Kanban-item'>
       <h2 className='Kanban-item__title'>Backlog</h2>
-      {tasks.map((elem) => (
+      {backlogTasks.map((elem) => (
         <BacklogItem
           key={elem.id}
           elem={elem}

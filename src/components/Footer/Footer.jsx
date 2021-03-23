@@ -1,10 +1,13 @@
 import './Footer.scss'
+import {useSelector} from 'react-redux';
 
 const Footer = () => {
+	const backlogTasks = useSelector(state => state.backlogTasks)
+
 	return (
 		<div className="Footer">
 			<div className="Footer-left">
-				<p>Active tasks: 0</p>
+				<p>Active tasks: {backlogTasks.length}</p>
 				<p>Finished tasks: 0</p>
 			</div>
 			<div className="Footer-right">
