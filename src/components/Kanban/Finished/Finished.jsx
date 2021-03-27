@@ -1,51 +1,51 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ReadyItem from './ReadyItem/ReadyItem';
 import {
   addInputField,
   moveTaskForward,
   updateStatus,
 } from '../../../store/action';
+import FinishedItem from './FinishedItem/FinishedItem';
 
-const Ready = () => {
+const Finished = () => {
   const [disable, setDisable] = useState(true);
-  const backlogTasks = useSelector((state) => state.backlogTasks);
-  const readyTasks = useSelector((state) => state.readyTasks);
+  const inProgressTasks = useSelector((state) => state.inProgressTasks);
+  const finishedTasks = useSelector((state) => state.finishedTasks);
   const tasks = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (backlogTasks.length > 0) setDisable(false);
+    if (inProgressTasks.length > 0) setDisable(false);
     else setDisable(true);
-  }, [backlogTasks]);
+  }, [inProgressTasks]);
 
-  const addNewReadyHandler = () => {
+  const addNewFinishedHandler = () => {
     setDisable(true);
-    dispatch(addInputField('ready'));
+    dispatch(addInputField('finished'));
   };
 
   const checkClickedItem = (id) => {
-    const currTarget = backlogTasks.findIndex((elem) => elem.id === id);
-    const copyItem = { ...backlogTasks[currTarget] };
+    const currTarget = inProgressTasks.findIndex((elem) => elem.id === id);
+    const copyItem = { ...inProgressTasks[currTarget] };
     let counter = tasks.length + 1;
-    dispatch(moveTaskForward(copyItem, 'ready'));
-    dispatch(updateStatus(id, 'ready', counter));
+    dispatch(moveTaskForward(copyItem, 'finished'));
+    dispatch(updateStatus(id, 'finished', counter));
     setDisable(false);
     // console.log(readyTasks[readyTasks.length - 1].counter);
   };
 
   return (
     <div className='Kanban-item'>
-      <h2 className='Kanban-item__title'>Ready</h2>
-      {readyTasks.map((elem) => (
-        <ReadyItem
+      <h2 className='Kanban-item__title'>Finished</h2>
+      {finishedTasks.map((elem) => (
+        <FinishedItem
           key={elem.id}
           elem={elem}
           checkClickedItem={checkClickedItem}
         />
       ))}
       <button
-        onClick={addNewReadyHandler}
+        onClick={addNewFinishedHandler}
         disabled={disable}
         className='Kanban-item__add-btn'>
         Add card
@@ -54,4 +54,4 @@ const Ready = () => {
   );
 };
 
-export default Ready;
+export default Finished;

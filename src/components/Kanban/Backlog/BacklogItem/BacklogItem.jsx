@@ -1,5 +1,6 @@
 import TextField from '@material-ui/core/TextField';
 import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 import './BacklogItem.scss';
 
 const BacklogItem = ({ elem, checkTitle, checkOutClick }) => {
@@ -20,19 +21,21 @@ const BacklogItem = ({ elem, checkTitle, checkOutClick }) => {
   }, []);
 
   return (
-    <div className='BacklogItem'>
-      <TextField
-        onBlur={(e) => checkBlur(e)}
-        onChange={(e) => checkTitle(e, elem.id)}
-        autoFocus={newTask ? true : false}
-        disabled={newTask ? false : true}
-        className='Kanban-item__task'
-        id='filled-textarea'
-        multiline
-        variant='outlined'
-        defaultValue={elem.title}
-      />
-    </div>
+    <NavLink className='Kanban-item__navlink' to={`/EditForm/${elem.id}`}>
+      <div className='BacklogItem'>
+        <TextField
+          onBlur={(e) => checkBlur(e)}
+          onChange={(e) => checkTitle(e, elem.id)}
+          autoFocus={newTask ? true : false}
+          disabled={newTask ? false : true}
+          className='Kanban-item__task'
+          id='filled-textarea'
+          multiline
+          variant='outlined'
+          defaultValue={elem.title}
+        />
+      </div>
+    </NavLink>
   );
 };
 

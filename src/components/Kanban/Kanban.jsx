@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux';
 import { fetchTasks } from '../../store/action';
 import Ready from './Ready/Ready';
 import InProgress from './InProgress/InProgress';
+import Finished from './Finished/Finished';
 
 const Kanban = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Kanban = () => {
       <Backlog />
       <Ready />
       <InProgress />
+      <Finished />
     </div>
   );
 };
