@@ -1,34 +1,48 @@
-import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import {useEffect, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import ReadyItem from './ReadyItem/ReadyItem';
+import {addInputField, moveTaskForward, updateStatus} from '../../../store/action';
 
 const Ready = () => {
-  const [disable, setDisable] = useState(true);
-  const backlogTasks = useSelector((state) => state.backlogTasks);
-  const readyTasks = useSelector((state) => state.readyTasks);
+	const [disable, setDisable] = useState(true);
+	const backlogTasks = useSelector((state) => state.backlogTasks);
+	const readyTasks = useSelector((state) => state.readyTasks);
+	const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (backlogTasks.length > 0) setDisable(false);
-    else setDisable(true);
-  }, [backlogTasks]);
+	useEffect(() => {
+		if (backlogTasks.length > 0) setDisable(false);
+		else setDisable(true);
+	}, [backlogTasks]);
 
-  const moveTaskHandler = () => {};
+	const addNewReadyHandler = () => {
+		setDisable(true);
+		dispatch(addInputField('ready'));
+	};
 
-  return (
-    <div className='Kanban-item'>
-      <h2 className='Kanban-item__title'>Ready</h2>
-      {readyTasks.map((elem) => (
-        <ReadyItem key={elem.id} elem={elem} />
-      ))}
-      <ReadyItem />
-      <button
-        // onClick={console.log(1)}
-        disabled={disable}
-        className='Kanban-item__add-btn'>
-        Add card
-      </button>
-    </div>
-  );
+	const checkClickedItem = id => {
+		const currTarget = backlogTasks.findIndex(elem => elem.id === id);
+		const copyItem = {...backlogTasks[currTarget]};
+		let counter = readyTasks.length + 1;
+		dispatch(moveTaskForward(copyItem, 'ready'));
+		dispatch(updateStatus(id, 'ready', counter));
+		setDisable(false);
+		console.log(readyTasks[readyTasks.length-1].counter);
+	};
+
+	return (
+		<div className='Kanban-item'>
+			<h2 className='Kanban-item__title'>Ready</h2>
+			{readyTasks.map((elem) => (
+				<ReadyItem key={elem.id} elem={elem} checkClickedItem={checkClickedItem}/>
+			))}
+			<button
+				onClick={addNewReadyHandler}
+				disabled={disable}
+				className='Kanban-item__add-btn'>
+				Add card
+			</button>
+		</div>
+	);
 };
 
 export default Ready;

@@ -1,20 +1,22 @@
 import { useState } from 'react';
 import BacklogItem from './BacklogItem/BacklogItem';
 import { useDispatch, useSelector } from 'react-redux';
-import { addNewTask, updateTask } from '../../../store/action';
+import {addNewTask, updateBacklogTask} from '../../../store/action';
 
 const Backlog = () => {
   const backlogTasks = useSelector((state) => state.backlogTasks);
+  const tasks = useSelector(state => state.tasks)
   const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch();
 
   const checkAndSaveTitle = (e, id) => {
-    dispatch(updateTask(id, e.target.value));
+    dispatch(updateBacklogTask(id, e.target.value));
   };
 
   const addTaskHandler = () => {
     setClicked(true);
-    dispatch(addNewTask('', '', 'backlog'));
+    let counter = tasks.length
+    dispatch(addNewTask('', '', 'backlog', ++counter));
   };
 
   const submitHandler = () => {

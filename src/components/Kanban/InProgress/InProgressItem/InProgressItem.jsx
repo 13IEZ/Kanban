@@ -1,20 +1,20 @@
-import TextField from '@material-ui/core/TextField';
+import './InProgressItem.scss'
 import Autocomplete from '@material-ui/lab/Autocomplete';
-import './ReadyItem.scss';
+import TextField from '@material-ui/core/TextField';
 import {useSelector} from 'react-redux';
 
-const ReadyItem = ({checkClickedItem, elem}) => {
-	const backlogTasks = useSelector((state) => state.backlogTasks);
+const InProgressItem = ({elem, checkClickedItem}) => {
+	const readyTasks = useSelector(state => state.readyTasks)
 
 	return (
-		<div className='ReadyItem'>
+		<div className='InProgressItem'>
 			<Autocomplete
 				defaultValue={elem.title !== ''? elem : null}
 				id='combo-box-demo'
 				freeSolo={elem.title !== ''}
 				disabled={elem.title !== ''}
-				className='ReadyItem__autocomplete'
-				options={backlogTasks}
+				className='InProgressItem__autocomplete'
+				options={readyTasks}
 				getOptionLabel={(option) => option.title}
 				renderInput={(params) => (
 					<TextField {...params} variant='outlined' multiline/>
@@ -28,7 +28,7 @@ const ReadyItem = ({checkClickedItem, elem}) => {
 				}}
 			/>
 		</div>
-	);
-};
+	)
+}
 
-export default ReadyItem;
+export default InProgressItem
