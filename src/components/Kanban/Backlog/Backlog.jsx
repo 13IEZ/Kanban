@@ -5,7 +5,6 @@ import {addNewTask, updateBacklogTask} from '../../../store/action';
 
 const Backlog = () => {
   const backlogTasks = useSelector((state) => state.backlogTasks);
-  const tasks = useSelector(state => state.tasks)
   const [clicked, setClicked] = useState(false);
   const dispatch = useDispatch();
 
@@ -14,9 +13,9 @@ const Backlog = () => {
   };
 
   const addTaskHandler = () => {
+    const dateCreation = new Date().toISOString();
     setClicked(true);
-    let counter = tasks.length
-    dispatch(addNewTask('', '', 'backlog', ++counter));
+    dispatch(addNewTask('', '', 'backlog', dateCreation, ''));
   };
 
   const submitHandler = () => {

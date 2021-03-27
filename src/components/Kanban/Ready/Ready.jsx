@@ -11,7 +11,6 @@ const Ready = () => {
   const [disable, setDisable] = useState(true);
   const backlogTasks = useSelector((state) => state.backlogTasks);
   const readyTasks = useSelector((state) => state.readyTasks);
-  const tasks = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,11 +26,10 @@ const Ready = () => {
   const checkClickedItem = (id) => {
     const currTarget = backlogTasks.findIndex((elem) => elem.id === id);
     const copyItem = { ...backlogTasks[currTarget] };
-    let counter = tasks.length + 1;
+    const lastUpdate = new Date().toISOString();
     dispatch(moveTaskForward(copyItem, 'ready'));
-    dispatch(updateStatus(id, 'ready', counter));
+    dispatch(updateStatus(id, 'ready', lastUpdate));
     setDisable(false);
-    // console.log(readyTasks[readyTasks.length - 1].counter);
   };
 
   return (

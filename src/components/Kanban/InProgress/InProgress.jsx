@@ -22,9 +22,9 @@ const InProgress = () => {
 	const checkClickedItem = id => {
 		const currTarget = readyTasks.findIndex(elem => elem.id === id)
 		const copyItem = {...readyTasks[currTarget]}
-		let counter = inProgressTasks.length + 1;
+		const lastUpdate = new Date().toISOString();
 		dispatch(moveTaskForward(copyItem, 'in progress'));
-		dispatch(updateStatus(id, 'in progress', counter))
+		dispatch(updateStatus(id, 'in progress', lastUpdate))
 		setDisable(false);
 	}
 

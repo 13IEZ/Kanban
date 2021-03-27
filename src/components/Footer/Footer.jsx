@@ -12,7 +12,7 @@ const Footer = () => {
 				<p>Finished tasks: {finishedTasks.length}</p>
 			</div>
 			<div className="Footer-right">
-				<p>React Kanban board by Igor Zakharov, 2021</p>
+				<p>React Kanban board by Igor Zakharov, {new Date().toDateString()}</p>
 			</div>
 		</div>
 	)

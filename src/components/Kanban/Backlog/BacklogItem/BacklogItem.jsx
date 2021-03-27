@@ -21,7 +21,7 @@ const BacklogItem = ({ elem, checkTitle, checkOutClick }) => {
   }, []);
 
   return (
-    <NavLink className='Kanban-item__navlink' to={`/EditForm/${elem.id}`}>
+    <NavLink className='Kanban-item__navlink' to={elem.title === '' ? `/` : `/:${elem.id}`}>
       <div className='BacklogItem'>
         <TextField
           onBlur={(e) => checkBlur(e)}

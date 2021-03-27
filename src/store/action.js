@@ -5,13 +5,14 @@ const fetchStatusSuccess = (tasks) => {
   return { type: FETCH_STATUS_SUCCESS, payload: tasks };
 };
 
-export const addNewTask = (title, description, status, counter) => {
+export const addNewTask = (title, description, status, dateCreation, lastUpdate) => {
   return (dispatch) => {
     db.ref('kanban').child('tasks').push({
       title,
       description,
       status,
-      counter
+      dateCreation,
+      lastUpdate
     });
   };
 };
@@ -20,8 +21,8 @@ export const addInputField = status => {
   return {type: ADD_INPUT_FIELD, payload: status}
 }
 
-export const updateStatus = (id, status, counter) => {
-  return (dispatch) => db.ref(`kanban/tasks/${id}`).update({status, counter})
+export const updateStatus = (id, status, lastUpdate) => {
+  return (dispatch) => db.ref(`kanban/tasks/${id}`).update({status, lastUpdate})
 }
 
 export const moveTaskForward = (item, type) => {
@@ -29,7 +30,7 @@ export const moveTaskForward = (item, type) => {
 }
 
 export const updateBacklogTask = (id, title) => {
-  return (dispatch) => db.ref(`kanban/tasks/${id}`).update({title });
+  return (dispatch) => db.ref(`kanban/tasks/${id}`).update({title});
 };
 
 

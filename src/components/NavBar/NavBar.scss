@@ -41,6 +41,7 @@
     top: 85%;
     font-size: 14px;
     display: flex;
+    z-index: 9999;
 
     &__list {
       list-style: none;

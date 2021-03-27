@@ -11,7 +11,6 @@ const Finished = () => {
   const [disable, setDisable] = useState(true);
   const inProgressTasks = useSelector((state) => state.inProgressTasks);
   const finishedTasks = useSelector((state) => state.finishedTasks);
-  const tasks = useSelector((state) => state.tasks);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -27,11 +26,10 @@ const Finished = () => {
   const checkClickedItem = (id) => {
     const currTarget = inProgressTasks.findIndex((elem) => elem.id === id);
     const copyItem = { ...inProgressTasks[currTarget] };
-    let counter = tasks.length + 1;
+    const lastUpdate = new Date().toISOString();
     dispatch(moveTaskForward(copyItem, 'finished'));
-    dispatch(updateStatus(id, 'finished', counter));
+    dispatch(updateStatus(id, 'finished', lastUpdate));
     setDisable(false);
-    // console.log(readyTasks[readyTasks.length - 1].counter);
   };
 
   return (
