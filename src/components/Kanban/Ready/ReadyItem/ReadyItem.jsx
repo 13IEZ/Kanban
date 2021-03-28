@@ -8,7 +8,7 @@ const ReadyItem = ({checkClickedItem, elem}) => {
 	const backlogTasks = useSelector((state) => state.backlogTasks);
 
 	return (
-		<NavLink className='Kanban-item__navlink' to={elem.title === '' ? `/` : `/:${elem.id}`}>
+		<NavLink className='Kanban-item__navlink' to={elem.title === '' ? `/` : `/${elem.id}`}>
 			<div className='ReadyItem'>
 				<Autocomplete
 					defaultValue={elem.title !== '' ? elem : null}

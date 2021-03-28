@@ -5,13 +5,13 @@ import Footer from '../Footer/Footer';
 const Layout = props => (
 	<div className="Layout">
 		<header className="Layout-header">
-			<NavBar />
+			<NavBar/>
 		</header>
 		<main className="Layout-main">
 			{props.children}
 		</main>
 		<footer className="Layout-footer">
-			<Footer />
+			<Footer/>
 		</footer>
 	</div>
 );

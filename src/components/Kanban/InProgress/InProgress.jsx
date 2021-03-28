@@ -16,17 +16,17 @@ const InProgress = () => {
 
 	const addNewInProgressHandler = () => {
 		setDisable(true);
-		dispatch(addInputField('in progress'))
+		dispatch(addInputField('in progress'));
 	};
 
 	const checkClickedItem = id => {
-		const currTarget = readyTasks.findIndex(elem => elem.id === id)
-		const copyItem = {...readyTasks[currTarget]}
+		const currTarget = readyTasks.findIndex(elem => elem.id === id);
+		const copyItem = {...readyTasks[currTarget]};
 		const lastUpdate = new Date().toISOString();
 		dispatch(moveTaskForward(copyItem, 'in progress'));
-		dispatch(updateStatus(id, 'in progress', lastUpdate))
+		dispatch(updateStatus(id, 'in progress', lastUpdate));
 		setDisable(false);
-	}
+	};
 
 	return (
 		<div className='Kanban-item'>
@@ -41,7 +41,7 @@ const InProgress = () => {
 				Add card
 			</button>
 		</div>
-	)
-}
+	);
+};
 
 export default InProgress;

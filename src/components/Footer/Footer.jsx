@@ -1,9 +1,9 @@
-import './Footer.scss'
+import './Footer.scss';
 import {useSelector} from 'react-redux';
 
 const Footer = () => {
-	const backlogTasks = useSelector(state => state.backlogTasks)
-	const finishedTasks = useSelector(state => state.finishedTasks)
+	const backlogTasks = useSelector(state => state.backlogTasks);
+	const finishedTasks = useSelector(state => state.finishedTasks);
 
 	return (
 		<div className="Footer">
@@ -12,10 +12,10 @@ const Footer = () => {
 				<p>Finished tasks: {finishedTasks.length}</p>
 			</div>
 			<div className="Footer-right">
-				<p>React Kanban board by Igor Zakharov, {new Date().toDateString()}</p>
+				<p>Kanban board by Igor Zakharov, {new Date().toDateString()}</p>
 			</div>
 		</div>
-	)
+	);
 };
 
 export default Footer;

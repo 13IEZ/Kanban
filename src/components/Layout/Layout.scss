@@ -1,8 +1,13 @@
+@import "src/container/mixins";
+
 .Layout {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
+  @include respond(big-tablets) {
+    height: 100%;
+  }
 
   &-header {
     background: #0067a3;
@@ -14,6 +19,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    padding: 0 20px;
   }
 
   &-footer {

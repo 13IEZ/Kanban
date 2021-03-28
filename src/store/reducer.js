@@ -14,10 +14,10 @@ const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				tasks: action.payload,
-				backlogTasks: action.payload.filter(elem => elem.status === 'backlog'),
-				readyTasks: action.payload.filter(elem => elem.status === 'ready').sort((a,b) => new Date(a.lastUpdate).getTime() > new Date(b.lastUpdate).getTime() ? 1 : -1),
-				inProgressTasks: action.payload.filter(elem => elem.status === 'in progress').sort((a,b) => new Date(a.lastUpdate).getTime() > new Date(b.lastUpdate).getTime() ? 1 : -1),
-				finishedTasks: action.payload.filter(elem => elem.status === 'finished').sort((a,b) => new Date(a.lastUpdate).getTime() > new Date(b.lastUpdate).getTime() ? 1 : -1)
+				backlogTasks: action.payload.filter(elem => elem.status === 'backlog').sort((a, b) => new Date(a.dateCreation).getTime() > new Date(b.dateCreation).getTime() ? 1 : -1),
+				readyTasks: action.payload.filter(elem => elem.status === 'ready').sort((a, b) => new Date(a.lastUpdate).getTime() > new Date(b.lastUpdate).getTime() ? 1 : -1),
+				inProgressTasks: action.payload.filter(elem => elem.status === 'in progress').sort((a, b) => new Date(a.lastUpdate).getTime() > new Date(b.lastUpdate).getTime() ? 1 : -1),
+				finishedTasks: action.payload.filter(elem => elem.status === 'finished').sort((a, b) => new Date(a.lastUpdate).getTime() > new Date(b.lastUpdate).getTime() ? 1 : -1)
 			};
 		case ADD_INPUT_FIELD:
 			if (action.payload === 'ready') {

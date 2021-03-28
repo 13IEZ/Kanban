@@ -6,8 +6,9 @@ import {NavLink} from 'react-router-dom';
 
 const FinishedItem = ({checkClickedItem, elem}) => {
 	const inProgressTasks = useSelector((state) => state.inProgressTasks);
+
 	return (
-		<NavLink className='Kanban-item__navlink' to={elem.title === '' ? `/` : `/:${elem.id}`}>
+		<NavLink className='Kanban-item__navlink' to={elem.title === '' ? `/` : `/${elem.id}`}>
 			<div className='FinishedItem'>
 				<Autocomplete
 					defaultValue={elem.title !== '' ? elem : null}
