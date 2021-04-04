@@ -7,8 +7,8 @@ function App() {
   return (
     <Layout>
       <Switch>
-        <Route path='/' component={Kanban} />
-        <Route path='/:id' component={EditForm} />
+        <Route path='/Kanban' component={Kanban} />
+        <Route path='/EditForm/:id' component={EditForm} />
       </Switch>
     </Layout>
   );
